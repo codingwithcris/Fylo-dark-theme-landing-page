@@ -1,0 +1,60 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+@each $color, $shades in v.$colors {
+    @each $shade, $value in $shades {
+        .text-#{$color}-#{$shade} {
+            color: $value;
+        }
+
+        .bg-#{$color}-#{$shade} {
+            background-color: $value;
+        }
+    }
+}
+
+@each $font-weight, $value in v.$font-weights {
+    .fw-#{$font-weight} {
+        font-weight: $value;
+    }
+}
+
+@each $align in v.$alignments {
+    .justify-#{$align} {
+        justify-content: $align;
+    }
+
+    .align-#{$align} {
+        align-items: $align;
+    }
+}
+
+@each $align in v.$text-alignments {
+    .text-#{$align} {
+        text-align: $align;
+    }
+}
+
+@each $property in v.$display {
+    .#{$property} {
+        display: $property;
+    }
+}
+
+@each $screen-size, $font-sizes in v.$type-scale {
+    @if $screen-size == small {
+        @each $font-size, $value in $font-sizes {
+            .fs-#{$font-size} {
+                font-size: $value;
+            }
+        }
+    } @else {
+        @include m.mq(large) {
+            @each $font-size, $value in $font-sizes {
+                .fs-#{$font-size} {
+                    font-size: $value;
+                }
+            }
+        }
+    }
+}

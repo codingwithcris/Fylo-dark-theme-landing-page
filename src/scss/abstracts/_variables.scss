@@ -1,0 +1,80 @@
+@use './mixins' as m;
+
+$colors: (
+    primary: (
+        750: hsl(219, 30%, 18%),
+        800: hsl(217, 28%, 15%),
+        850: hsl(218, 28%, 13%),
+        900: hsl(216, 53%, 9%)
+    ),
+    accent: (
+        300: hsl(176, 68%, 64%),
+        400: hsl(198, 60%, 50%),
+    ),
+    neutral: (
+        100: hsl(0, 0%, 100%)
+    ),
+    error: (
+        300: hsl(0, 100%, 63%)
+    )
+);
+
+$font-weights: (
+    regular: 400,
+    bold: 700
+);
+
+$type-scale: (
+    small: (
+        200: .75rem,
+        300: .8125rem,
+        400: .875rem,
+        500: 1.125rem,
+        600: 1.425rem,
+        700: 1.8125rem,
+        800: 2.5rem,
+        900: 3rem
+    ),
+    large: (
+        200: .75rem,
+        300: .8125rem,
+        400: .875rem,
+        500: 1.25rem,
+        600: 1.75rem,
+        700: 2.25rem,
+        800: 2.75rem,
+        900: 3.25rem
+    )
+);
+
+$alignments: space-between, center, space-evenly, space-around;
+$text-alignments: left, center, right;
+$display: flex, block, inline-block;
+
+:root {
+    @each $color, $shades in $colors {
+        @each $shade, $value in $shades {
+            --clr-#{$color}-#{$shade}: #{$value};
+        }
+    }
+
+    @each $font-weight, $value in $font-weights {
+        --fw-#{$font-weight}: #{$value};
+    }
+
+    @each $screen-size, $font-sizes in $type-scale {
+        @if $screen-size == small {
+            @each $font-size, $value in $font-sizes {
+                --fs-#{$font-size}: #{$value};
+            }
+        } @else {
+            @include m.mq(large) {
+                @each $font-size, $value in $font-sizes {
+                    --fs-#{$font-size}: #{$value};
+                }
+            }
+        }
+    }
+
+    --ff: "Raleway", sans-serif;
+}

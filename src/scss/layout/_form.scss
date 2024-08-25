@@ -1,0 +1,42 @@
+@use '../abstracts/mixins' as m;
+
+.cta-form {
+    &__input {
+        flex: 1;
+        border-radius: 3rem;
+        padding: 1.125em 2em;
+        font-size: var(--fs-300);
+        grid-row: 1;
+        max-width: 40em;
+
+        @include m.mq(large) {
+            grid-column: 1;
+        }
+    }
+
+    &__error {
+        margin-inline: auto;
+        color: var(--clr-error-300);
+        font-size: var(--fs-200);
+        font-weight: var(--fw-bold);
+        grid-row: 2;
+        display: none;
+
+        @include m.mq(large) {
+            grid-column: span 2;
+            margin-inline-start: 0;
+            padding-inline: 2em;
+        }
+    }
+}
+
+.input-group {
+    display: grid;
+    grid-template-rows: auto auto auto;
+    gap: 1em;
+
+    @include m.mq(large) {
+        grid-template-rows: auto auto;
+        grid-template-columns: 2fr 1fr;
+    }
+}

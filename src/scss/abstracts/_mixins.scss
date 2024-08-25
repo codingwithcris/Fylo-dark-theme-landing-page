@@ -1,0 +1,36 @@
+@use './breakpoints' as b;
+
+@mixin mq($key) {
+    $screen-size: map-get(b.$breakpoints, $key);
+
+    @media screen and (min-width: $screen-size) {
+        @content;
+    }
+}
+
+@mixin general-style-btn {
+        background: linear-gradient(90deg,
+        var(--clr-accent-300),
+        var(--clr-accent-400) 80%
+    );
+    border-radius: 3rem;
+    border: none;
+    color: var(--clr-neutral-100);
+    font-weight: var(--fw-bold);
+    cursor: pointer;
+
+    &:hover,
+    &:focus-visible {
+        background: linear-gradient(90deg,
+            var(--clr-accent-300),
+            var(--clr-accent-300)
+        );
+    }
+}
+
+@mixin flex($direction) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: $direction;
+}

@@ -1,0 +1,37 @@
+@use '../abstracts/mixins' as m;
+
+.header--navigation {
+    position: relative;
+
+    &::before {
+        background-color: var(--clr-primary-750);
+        content: '';
+        background-image: url(../assets/images/bg-curvy-mobile.svg);
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: bottom;
+        z-index: -1;
+        position: absolute;
+        height: 32em;
+        width: 100%;
+
+        @include m.mq(large) {
+            background-image: url(../assets/images/bg-curvy-desktop.svg);
+            height: 80em;
+        }
+    }
+}
+
+.header--wrapper {
+    width: min(85em, 100% - 4rem);
+    margin-inline: auto;
+    padding-block: 3em;
+}
+
+.header__logo {
+    height: 26px;
+
+    @include m.mq(large) {
+        height: 52px;
+    }
+}

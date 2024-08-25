@@ -1,0 +1,73 @@
+@use '../abstracts/mixins' as m;
+
+.footer {
+    padding-block-start: 20em;
+    padding-block-end: 6em;
+    background-color: var(--clr-primary-900);
+
+    &--wrapper {
+        width: min(85em, 100% - 4rem);
+        margin-inline: auto;
+    }
+
+    &__logo {
+        margin-block-end: 3em;
+
+        @include m.mq(small) {
+            margin-inline-start: .25em;
+        }
+    }
+
+    &--layout {
+        display: grid;
+        gap: 7em;
+
+        @include m.mq(large) {
+            grid-template-columns: auto auto auto;
+            gap: 10em;
+        }
+    }
+
+    &__company-info {
+        --spacer: 1em;
+
+        display: grid;
+        gap: var(--spacer);
+
+        @include m.mq(large) {
+            grid-template-columns: auto auto;
+        }
+    }
+
+    &__location-details {
+        display: grid;
+        gap: var(--spacer);
+        grid-template-columns: auto 1fr;
+        align-items: first baseline;
+        grid-column-gap: 1.5em;
+
+        @include m.mq(large) {
+            height: fit-content;
+        }
+
+        p {
+            @include m.mq(large) {
+                width: 75%;
+            }
+        }
+    }
+
+    &__contact-details {
+        width: fit-content;
+        align-items: center;
+        display: grid;
+        grid-template-columns: auto 1fr;
+        grid-template-rows: auto auto;
+        gap: var(--spacer);
+
+        @include m.mq(large) {
+            height: fit-content;
+        }
+    }
+}
+

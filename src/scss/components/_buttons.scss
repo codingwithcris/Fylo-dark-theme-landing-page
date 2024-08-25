@@ -1,0 +1,21 @@
+@use '../abstracts/mixins' as m;
+
+.hero--layout .button {
+    margin-inline: auto;
+    @include m.general-style-btn;
+    padding: 1.125em 6em;
+}
+
+.cta-form {
+    &__button {
+        @include m.general-style-btn;
+        padding-block: 1.125em;
+        text-wrap: nowrap;
+        grid-row: 3;
+
+        @include m.mq(large) {
+            grid-row: 1;
+            grid-column: 2;
+        }
+    }
+}
